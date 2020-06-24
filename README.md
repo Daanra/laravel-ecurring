@@ -23,8 +23,15 @@ php artisan vendor:publish --provider="Daanra\Ecurring\EcurringServiceProvider" 
 ## Usage
 
 ``` php
-$skeleton = new Spatie\Skeleton();
-echo $skeleton->echoPhrase('Hello, Spatie!');
+use Daanra\Ecurring\Facades\Ecurring;
+
+$customer = Ecurring::customer()->create([
+    'first_name'  => 'Test',
+    'last_name'  => 'Tester',
+    'email' => 'test@example.com'
+]);
+
+$subscription = Ecurring::subscription()->find(123);
 ```
 
 ## Testing
