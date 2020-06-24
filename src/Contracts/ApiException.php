@@ -7,5 +7,4 @@ use Illuminate\Http\Client\Response;
 interface ApiException
 {
     public function getResponse(): Response;
-
 }

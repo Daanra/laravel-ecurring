@@ -4,7 +4,6 @@ namespace Daanra\Ecurring\Tests;
 
 use Daanra\Ecurring\EcurringServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Daanra\Ecurring\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {

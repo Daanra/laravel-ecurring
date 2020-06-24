@@ -34,7 +34,7 @@ class BaseRepository implements RestApi
             'data' => [
                 'type' => static::getModelName(),
                 'attributes' => $attributes,
-            ]
+            ],
         ]);
 
         if (! $response->successful()) {
@@ -65,8 +65,8 @@ class BaseRepository implements RestApi
             'data' => [
                 'type' => static::getModelName(),
                 'id' => (string) $id,
-                'attributes' => $attributes
-            ]
+                'attributes' => $attributes,
+            ],
         ];
     }
 
@@ -78,7 +78,6 @@ class BaseRepository implements RestApi
     public static function getBasePath()
     {
         return '/' . Str::plural(static::getModelName());
-
     }
 
     protected static function makeModel(Response $response)

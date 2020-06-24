@@ -2,7 +2,6 @@
 
 namespace Daanra\Ecurring\Repositories;
 
-use Daanra\Ecurring\Facades\Ecurring;
 use Daanra\Ecurring\Models\SubscriptionPlan;
 
 /**
@@ -13,5 +12,4 @@ use Daanra\Ecurring\Models\SubscriptionPlan;
 class SubscriptionPlanRepository extends BaseRepository
 {
     protected static $model = SubscriptionPlan::class;
-
 }

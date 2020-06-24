@@ -3,7 +3,6 @@
 namespace Daanra\Ecurring\Exceptions;
 
 use Exception;
-use Illuminate\Http\Client\Response;
 
 class EcurringCustomerNotSet extends Exception
 {

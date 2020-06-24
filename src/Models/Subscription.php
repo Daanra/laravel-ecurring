@@ -101,5 +101,4 @@ class Subscription extends BaseModel
 
         return $this->transactions = SubscriptionPlanRepository::getTransactions($this->id);
     }
-
 }

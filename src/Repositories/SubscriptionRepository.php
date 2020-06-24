@@ -2,9 +2,9 @@
 
 namespace Daanra\Ecurring\Repositories;
 
+use Carbon\Carbon;
 use Daanra\Ecurring\Constants\SubscriptionStatus;
 use Daanra\Ecurring\Models\Subscription;
-use Carbon\Carbon;
 
 class SubscriptionRepository extends BaseRepository
 {
@@ -14,7 +14,7 @@ class SubscriptionRepository extends BaseRepository
     public static function updateStatus($id, string $status): Subscription
     {
         return static::update($id, [
-            'status' => $status
+            'status' => $status,
         ]);
     }
 

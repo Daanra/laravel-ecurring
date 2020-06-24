@@ -2,14 +2,12 @@
 
 namespace Daanra\Ecurring;
 
-use Daanra\Ecurring\Api\CustomerApi;
 use Daanra\Ecurring\Repositories\CustomerRepository;
 use Daanra\Ecurring\Repositories\SubscriptionPlanRepository;
 use Daanra\Ecurring\Repositories\SubscriptionRepository;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Traits\ForwardsCalls;
-use Illuminate\Http\Client\Factory;
 
 /**
  * Class Ecurring
@@ -28,7 +26,7 @@ class Ecurring
     {
         $this->client = $client;
         $this->http = Http::withHeaders([
-            'X-Authorization' => $client->getApiKey()
+            'X-Authorization' => $client->getApiKey(),
         ]);
     }
 //

@@ -20,7 +20,6 @@ class ApiExceptionFactory
         }
 
         if ($response->status() === 403) {
-
         }
         dd($response->json());
     }

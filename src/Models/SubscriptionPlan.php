@@ -25,6 +25,5 @@ class SubscriptionPlan extends BaseModel
 
     public function subscriptions()
     {
-
     }
 }

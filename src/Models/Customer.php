@@ -2,7 +2,6 @@
 
 namespace Daanra\Ecurring\Models;
 
-use Daanra\Ecurring\Repositories\SubscriptionPlanRepository;
 use Daanra\Ecurring\Repositories\SubscriptionRepository;
 use Illuminate\Support\Collection;
 
@@ -43,6 +42,7 @@ class Customer extends BaseModel
     public function getLatestSubscription(): ?Subscription
     {
         $latest = $this->subscription_ids->last();
+
         return $latest ? SubscriptionRepository::find($latest) : null;
     }
 }

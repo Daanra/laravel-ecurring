@@ -22,7 +22,7 @@ class EcurringServiceProvider extends ServiceProvider
 
         $config = $this->app->config;
 
-        $this->app->bind('ecurring',function () use ($config) {
+        $this->app->bind('ecurring', function () use ($config) {
             if ($config->get('ecurring.api_key') === null) {
                 throw new EcurringApiKeyMissing();
             }
