@@ -7,6 +7,9 @@
 
 A package for interacting with [eCurring's](https://www.ecurring.com/) API. Their API documentation can be found [here](https://docs.ecurring.com).
 
+
+This package is still being developed.
+
 ## Installation
 
 You can install the package via composer:
