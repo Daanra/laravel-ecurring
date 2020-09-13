@@ -43,18 +43,20 @@ trait Billable
 
     /**
      * @param string|int $subscription_plan_id
+     * @param array $attributes - The extra attributes to send to the API endpoint.
      * @throws EcurringCustomerNotSet
      * @throws \Daanra\Ecurring\Contracts\ApiException
+     * @return Subscription
      */
-    public function createSubscription($subscription_plan_id)
+    public function createSubscription($subscription_plan_id, array $attributes = []): Subscription
     {
         if ($this->ecurring_customer_id === null) {
             throw new EcurringCustomerNotSet($this);
         }
 
-        Ecurring::subscription()->create([
+        return Ecurring::subscription()->create(array_merge([
             'customer_id' => (string) $this->ecurring_customer_id,
             'subscription_plan_id' => (string) $subscription_plan_id,
-        ]);
+        ], $attributes));
     }
 }
