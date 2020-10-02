@@ -13,7 +13,7 @@ use Daanra\Ecurring\Repositories\SubscriptionPlanRepository;
  */
 class Subscription extends BaseModel
 {
-    public string $mandate_code;
+    public ?string $mandate_code;
     public bool $mandate_accepted;
 
     public ?string $mandate_accepted_date;
