@@ -87,6 +87,9 @@ class BaseRepository implements RestApi
         $attributes['id'] = $data['id'];
         $relations = $data['relationships'] ?? [];
         foreach ($relations as $relation_name => $relation) {
+            if (! isset($relation['data'])) {
+                continue;
+            }
             $relation_name = Str::slug($relation_name, '_');
             $singular = Str::singular($relation_name);
             $has_multiple = $singular !== $relation_name;
