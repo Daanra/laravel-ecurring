@@ -21,7 +21,7 @@ class SubscriptionPlan extends BaseModel
     public string $created_at;
     public string $updated_at;
 
-    public Collection $subscription_ids;
+    public ?Collection $subscription_ids;
 
     public function subscriptions()
     {
