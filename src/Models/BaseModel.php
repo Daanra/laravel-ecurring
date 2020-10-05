@@ -15,9 +15,7 @@ class BaseModel
 
         foreach ($class->getProperties(ReflectionProperty::IS_PUBLIC) as $reflectionProperty) {
             $property = $reflectionProperty->getName();
-            if (isset($parameters[$property])) {
-                $this->{$property} = $parameters[$property];
-            }
+            $this->{$property} = $parameters[$property] ?? null;
         }
     }
 
