@@ -17,7 +17,10 @@ class ServerError extends Exception implements ApiException
         $this->response = $response;
         $data = $response->json();
         $this->response_code = isset($data['errors']['code']) ? $data['errors']['code'] : null;
-        parent::__construct('The eCurring API request failed with an internal server error.');
+        $strData = rescue(function () use ($data) {
+            return json_encode($data);
+        }, '') ?: 'false';
+        parent::__construct('The eCurring API request failed with an internal server error. Code: ' . $this->response_code . ' Body: ' . $strData);
     }
 
     public function getResponse(): Response
