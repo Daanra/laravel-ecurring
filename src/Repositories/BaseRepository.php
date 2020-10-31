@@ -2,13 +2,13 @@
 
 namespace Daanra\Ecurring\Repositories;
 
+use function collect;
 use Daanra\Ecurring\Contracts\RestApi;
 use Daanra\Ecurring\Facades\Ecurring;
 use Daanra\Ecurring\Factories\ApiExceptionFactory;
 use Daanra\Ecurring\Models\BaseModel;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Str;
-use function collect;
 
 class BaseRepository implements RestApi
 {
@@ -17,7 +17,7 @@ class BaseRepository implements RestApi
     public static function find($id): ?BaseModel
     {
         $response = Ecurring::get(static::getBasePath() . '/' . $id);
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             throw ApiExceptionFactory::make($response, static::$model, $id);
         }
 
@@ -38,7 +38,7 @@ class BaseRepository implements RestApi
             ],
         ]);
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             throw ApiExceptionFactory::make($response, static::$model);
         }
 
@@ -48,7 +48,7 @@ class BaseRepository implements RestApi
     public static function update($id, array $attributes)
     {
         $response = Ecurring::patch(static::getBasePath() . '/' . $id, static::formatBody($id, $attributes));
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             throw ApiExceptionFactory::make($response, static::$model);
         }
 
@@ -87,7 +87,7 @@ class BaseRepository implements RestApi
         $attributes['id'] = $data['id'];
         $relations = $data['relationships'] ?? [];
         foreach ($relations as $relation_name => $relation) {
-            if (!isset($relation['data'])) {
+            if (! isset($relation['data'])) {
                 continue;
             }
             $relation_name = Str::slug($relation_name, '_');
@@ -106,6 +106,7 @@ class BaseRepository implements RestApi
     public static function makeModel(Response $response)
     {
         $data = $response->json()['data'];
+
         return static::makeFromData($data);
     }
 
