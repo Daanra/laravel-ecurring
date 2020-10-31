@@ -3,6 +3,7 @@
 namespace Daanra\Ecurring;
 
 use Daanra\Ecurring\Repositories\CustomerRepository;
+use Daanra\Ecurring\Repositories\InvoiceRepository;
 use Daanra\Ecurring\Repositories\SubscriptionPlanRepository;
 use Daanra\Ecurring\Repositories\SubscriptionRepository;
 use Illuminate\Http\Client\PendingRequest;
@@ -72,5 +73,10 @@ class Ecurring
     public function subscriptionPlan(): SubscriptionPlanRepository
     {
         return new SubscriptionPlanRepository();
+    }
+
+    public function invoice(): InvoiceRepository
+    {
+        return new InvoiceRepository();
     }
 }

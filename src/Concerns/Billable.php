@@ -4,8 +4,12 @@ namespace Daanra\Ecurring\Concerns;
 
 use Daanra\Ecurring\Exceptions\EcurringCustomerNotSet;
 use Daanra\Ecurring\Facades\Ecurring;
+use Daanra\Ecurring\Factories\ApiExceptionFactory;
 use Daanra\Ecurring\Models\Customer;
+use Daanra\Ecurring\Models\Invoice;
 use Daanra\Ecurring\Models\Subscription;
+use Daanra\Ecurring\Repositories\InvoiceRepository;
+use Illuminate\Support\Collection;
 
 trait Billable
 {
@@ -39,6 +43,23 @@ trait Billable
         $this->hasFetchedSubscription = true;
 
         return $this->fetchedSubscription = optional($this->getCustomer())->getLatestSubscription();
+    }
+
+    /**
+     * @phpstan-return Collection<Invoice>
+     * @return Collection|Invoice[]
+     * @throws \Daanra\Ecurring\Contracts\ApiException
+     */
+    public function getInvoices(): Collection
+    {
+        $response = Ecurring::get('/customers/' . $this->ecurring_customer_id . '/subscriptions?include=invoices');
+        if (! $response->successful()) {
+            throw ApiExceptionFactory::make($response, Customer::class, $this->ecurring_customer_id);
+        }
+
+        return collect($response['included'] ?? [])->map(function (array $invoice) {
+            return InvoiceRepository::makeFromData($invoice);
+        });
     }
 
     /**
