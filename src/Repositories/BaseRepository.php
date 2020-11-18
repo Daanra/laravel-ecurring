@@ -109,8 +109,4 @@ class BaseRepository implements RestApi
 
         return static::makeFromData($data);
     }
-
-    public function all()
-    {
-    }
 }
