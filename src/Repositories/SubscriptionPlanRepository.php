@@ -26,6 +26,7 @@ class SubscriptionPlanRepository extends BaseRepository
         }
 
         $data = $response->json()['data'];
+
         return collect($data)->map(function ($plan) {
             return static::makeModel($plan);
         });
