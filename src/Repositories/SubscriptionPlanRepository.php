@@ -20,7 +20,9 @@ class SubscriptionPlanRepository extends BaseRepository
     {
         $response = Ecurring::get(static::getBasePath(), [
             'page[size]' => $amount,
+            'filter[archived][only]' => 0,
         ]);
+
         if (! $response->successful()) {
             throw ApiExceptionFactory::make($response, static::$model);
         }
