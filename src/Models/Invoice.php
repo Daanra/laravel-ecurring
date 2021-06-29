@@ -14,7 +14,7 @@ class Invoice extends BaseModel
     public array $tax_rates;
     public string $tax_amount;
     public ?string $invoice_date;
-    public string $transaction_date;
+    public ?string $transaction_date;
     public string $hosted_invoice_url;
     public string $created_at;
     public string $updated_at;
