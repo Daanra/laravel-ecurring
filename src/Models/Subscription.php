@@ -26,7 +26,7 @@ class Subscription extends BaseModel
 
     public ?string $resume_date;
 
-    public string $confirmation_page;
+    public ?string $confirmation_page;
 
     public bool $confirmation_sent;
 
